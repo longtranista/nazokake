@@ -4,117 +4,26 @@
   <title>なぞかけ.xyz</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/4.2.0/normalize.css">
+  <meta name="description" content="なぞかけ">
 
-  <!-- Latest compiled and minified CSS -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  {% load staticfiles %}
 
-<!-- Optional theme -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+  <link rel="stylesheet" type="text/css" href="{% static 'myapp/css/normalize.css'%}">
 
+  <link rel="stylesheet" type="text/css" href="{% static 'myapp/css/bootstrap.min.css'%}">
 
-<script   src="https://code.jquery.com/jquery-3.1.0.min.js"   integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s="   crossorigin="anonymous"></script>
+  <script type="text/javascript" src="{% static 'myapp/js/jquery.min.js'%}"></script>
 
-{% load staticfiles %}
+  <script type="text/javascript" src="{% static 'myapp/bower_components/nprogress/nprogress.js'%}"></script>
 
-<script type="text/javascript" src="{% static 'myapp/bower_components/nprogress/nprogress.js'%}"></script>
+  <link rel="stylesheet" type="text/css" href="{% static 'myapp/bower_components/nprogress/nprogress.css'%}">
 
-<link rel="stylesheet" type="text/css" href="{% static 'myapp/bower_components/nprogress/nprogress.css'%}">
+  <script type="text/javascript" src="{% static 'myapp/js/jquery.cookie.js'%}"></script>
 
-<script type="text/javascript" src="{% static 'myapp/js/jquery.cookie.js'%}"></script>
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.css">
 
-<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.css">
+  <link rel="stylesheet" type="text/css" href="{% static 'myapp/css/common.css'%}">
 
-  
-  <style type="text/css">
-  
-  a{
-    text-decoration: none !important;
-  }
-
-  .header{
-    background: #fff;
-  }
-
-    body{
-      background: #f0f0f0;
-    }
-
-    .post{
-      border: 1px solid #c0c0c0;
-      padding: 10px;
-      margin-bottom: 30px;
-      -webkit-box-shadow: 3px 3px 5px 0px rgba(181,170,181,1);
-      -moz-box-shadow: 3px 3px 5px 0px rgba(181,170,181,1);
-      box-shadow: 3px 3px 5px 0px rgba(181,170,181,1);
-    }
-
-    .post-list{
-
-    }
-    .post-list .item{
-      margin-top: 20px;
-      border-bottom: 1px solid #f0f0f0;
-    } 
-
-    .highlight{
-      display: inline-block;
-      background: #dedede;
-      padding: 0 10px;
-    }
-    .highlight.orange{
-      background: orange;
-    }
-
-    .right{
-      text-align: right;
-    }
-    .content{
-      max-width: 700px;
-      margin-top: 10px;
-      background: #fff;
-      padding: 20px;
-    }
-
-    .header-content{
-      max-width: 800px;
-    }
-    .like-btn{
-      /*background: none;*/
-      /*border: 1px solid #f0f0f0;*/
-    }
-    .like-btn i{
-      color: red;
-    }
-
-    .like-btn:hover{
-      background: #f0f0f0;
-      /*border: 1px solid #f0f0f0;*/
-    }
-
-    .branding{
-      padding: 10px 40px 30px 0;
-    }
-    .menu li{
-      margin-right: 20px;
-    }
-
-    .container-fluid{
-      padding: 0;
-      margin: 0;
-    }
-    .hidden{
-      display: none;
-    }
-
-    .twitter-share-button{
-      margin-right: 25px;
-    }
-
-    .liked-number{
-      color: #7f7d7d;
-    }
-  </style>
 
 </head>
 <body>
@@ -136,14 +45,11 @@
 
   <div class="content container">
     <div class="post">
-      <form action="/action/post" method="POST">
+      <div class="post-cover hidden-md hidden-lg">なぞかけを投稿 <i class="fa fa-arrow-down" aria-hidden="true"></i></div>
+      <form action="/action/post" class="hidden-xs hidden-sm" method="POST">
         {% csrf_token %}
-        <p>
-          <input type="text" name="kakeru" placeholder="かける">　とかけて　<input type="text" placeholder="とく" name="toku"> と解きます
-        </p>
-        <p>
-          その心は？　　どちらも　<input type="text" placeholder="こころ" name="kokoro">
-        </p>
+        <p><input type="text" name="kakeru" placeholder="かける">　とかけて　<input type="text" placeholder="とく" name="toku"> と解きます。</p>
+        <p>その心は？　　どちらも　<input type="text" placeholder="こころ" name="kokoro"></p>
         <p class="right">
           <button class="btn btn-primary">投稿</button>
         </p>
@@ -151,24 +57,12 @@
     </div>
 
     <div class="post-list">
-
-    {% for post in posts %}
-
+      {% for post in posts %}
           <div class="item" id="{{post.id}}">
-              <p>
-                <span class="highlight">{{post.kakeru}}</span>　とかけて　<span class="highlight">{{post.toku}}</span> と解きます
-              </p>
-              <p>
-                その心は？　　どちらも　<span class="highlight orange"> <span class="blur">答えを見る</span><span class="answer hidden">{{post.kokoro}}</span></span>
-              </p>
+              <p><span class="highlight">{{post.kakeru}}</span>　とかけて　<span class="highlight">{{post.toku}}</span> と解きます。</p>
+              <p>その心は？　　どちらも　<span class="highlight orange"> <span class="blur">答えを見る</span><span class="answer hidden">{{post.kokoro}}</span></span></p>
               <p class="right" >
-
-              
-
-                  <a class="twitter-share-button" href="https://twitter.com/intent/tweet?text={{post.share_text}}"> <i class="fa fa-twitter" aria-hidden="true"></i>
-Tweet</a>
-
-
+                  <a class="twitter-share-button" href="https://twitter.com/intent/tweet?text={{post.share_text}}"> <i class="fa fa-twitter" aria-hidden="true"></i>Tweet</a>
                   <span class="liked-number">{{post.like}}</span>
                   <a href="javascript:void(0);" id="{{post.id}}" class="like-btn"><i class="fa fa-heart-o" aria-hidden="true"></i> like</a>
               </p>
@@ -181,92 +75,9 @@ Tweet</a>
   </div>
 
   </div>
-  <script type="text/javascript">
 
-      function template(posts) {
-        var tmpl = '';
-        for (var i = 0; i < posts.length ; i++ ) {
-          var post = posts[i];
-          tmpl += [
-          '<div class="item" id="' + post.id + '">',
-          '<p>',
-          '<span class="highlight">' + post.kakeru + '</span>　とかけて　<span class="highlight">' + post.toku + '</span> と解きます',
-          '</p>',
-          '<p>',
-          'その心は？　　どちらも　<span class="highlight orange"> <span class="blur">答えを見る</span><span class="answer hidden">' + post.kokoro + '</span></span>',
-          '</p>',
-          '<p class="right" >',
-          '<a class="twitter-share-button" href="https://twitter.com/intent/tweet?text=' + post.share_text + '"> <i class="fa fa-twitter" aria-hidden="true"></i>Tweet</a>',
-          '<span class="liked-number">' + post.like + '</span>',
-          '<a href="javascript:void(0);" id="' + post.id + '" class="like-btn"><i class="fa fa-heart-o" aria-hidden="true"></i> like</a>',
-          '</p>',
-          '</form>',
-          '</div>'
-          ].join('');
-        }
-        return tmpl;
-      }
-
-      function syncLikeBtn() {
-        $('.like-btn').each(function () {
-          var id =  $(this).attr('id');
-          var key = 'id-' + id;
-          var me = this;
-          if($.cookie(key)) {
-            $(me).find('i').removeClass('fa-heart-o').addClass('fa-heart');
-          }
-        })
-      }
+  <script type="text/javascript" src="{% static 'myapp/js/common.js'%}"></script>
 
 
-      $(document).ready(function () {
-        
-        syncLikeBtn();
-
-
-        $('.post-list').on('click', '.like-btn', function () {
-          console.log('click me')
-          var id =  $(this).attr('id');
-          var key = 'id-' + id;
-          var me = this;
-          if ($.cookie(key) === undefined){
-            NProgress.start()
-            $.get('/api/like?id=' + id, {}, function (res) {
-              $.cookie(key, true);
-              $(me).find('i').removeClass('fa-heart-o').addClass('fa-heart');
-              NProgress.done()
-            })
-          }else {
-            $.removeCookie(key);
-            $(me).find('i').removeClass('fa-heart').addClass('fa-heart-o');
-          }
-          
-        });
-
-        $('.post-list').on('click', '.blur', function () {
-          var $me = $(this);
-          var $next = $(this).siblings('.answer');
-          $me.addClass('hidden');
-          $next.removeClass('hidden');
-        });
-
-
-        $(window).scroll(function() {
-           if($(window).scrollTop() + $(window).height() == $(document).height()) {
-              var pageMode = $('#pageMode').val();
-              NProgress.start()
-              $.get('/api/load?count=' + $('.item').length + '&mode=' + pageMode, {}, function (res) {
-                
-                $('.post-list').append(template(res.posts));
-
-                syncLikeBtn();
-
-                NProgress.done()
-              })
-           }
-        });
-
-      })
-  </script>
 </body>
 </html>

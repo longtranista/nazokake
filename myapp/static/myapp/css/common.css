@@ -1,0 +1,89 @@
+
+a{
+text-decoration: none !important;
+}
+
+body{
+  background: #f0f0f0;
+}
+.right{
+  text-align: right;
+}
+.hidden{
+  display: none;
+}
+.container-fluid{
+  padding: 0;
+  margin: 0;
+}
+
+.content{
+  max-width: 700px;
+  margin-top: 10px;
+  background: #fff;
+  padding: 20px;
+}
+.header-content{
+  max-width: 800px;
+}
+
+.header{
+  background: #fff;
+}
+.branding{
+  padding: 10px 0px 20px 0;
+}
+
+@media (max-width: 768px) { 
+  .branding{
+    padding: 0px 0px 0px 0;
+  }
+}
+
+.post{
+  border: 1px solid #c0c0c0;
+  padding: 10px;
+  margin-bottom: 30px;
+  -webkit-box-shadow: 3px 3px 5px 0px rgba(181,170,181,1);
+  -moz-box-shadow: 3px 3px 5px 0px rgba(181,170,181,1);
+  box-shadow: 3px 3px 5px 0px rgba(181,170,181,1);
+}
+
+.post-list .item{
+  margin-top: 20px;
+  border-bottom: 1px solid #f0f0f0;
+} 
+
+.highlight{
+  display: inline-block;
+  background: #dedede;
+  padding: 0 10px;
+}
+.highlight.orange{
+  background: #fdd792;
+}
+
+.like-btn i{
+  color: red;
+}
+
+
+
+.menu li{
+  margin-right: 20px;
+}
+
+
+
+.twitter-share-button{
+  margin-right: 25px;
+}
+
+.liked-number{
+  color: #7f7d7d;
+}
+
+.post-cover{
+  cursor: pointer;
+  color: #337ab7;
+}
