@@ -18,5 +18,5 @@ class Post(models.Model):
 
     @property
     def share_text(self):
-      text = u'%s　とかけて　%s　と解きます。\nどちらも%s！　#なぞかけ   \n-  %s' % (self.kakeru, self.toku, self.kokoro, 'http://nazokake.xyz')
+      text = u'%s　とかけて　%s　と解きます。\nどちらも%s！　#なぞかけドットコム   \n-  %s' % (self.kakeru, self.toku, self.kokoro, u'http://なぞかけ.コム')
       return urlquote(text)

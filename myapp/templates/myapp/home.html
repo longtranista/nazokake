@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>なぞかけ.xyz</title>
+  <title>なぞかけ.コム</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <meta name="description" content="なぞかけ">
+  <meta name="description" content="なぞかけ - なぞかけドットコム - “かける！解く！その心は！？” ">
 
   {% load staticfiles %}
 
@@ -31,11 +31,11 @@
     
   <div class="container-fluid header">
     <div class="header-content container">
-      <div class="branding"><a href="/"><h3>なぞかけ</h3></a></div>
+      <div class="branding"><a href="/"><h3>なぞかけ.コム</h3></a></div>
       <div class="menu">
-        <ul class="list-inline menu">
-          <li><a href="/">新着</a></li>
-          <li><a href="/?s=ranking">ランキング</a></li>
+        <ul class="list-inline menu {{mode}}">
+          <li class="time"><a href="/">新着</a></li>
+          <li class="ranking"><a  href="/?s=ranking">ランキング</a></li>
         </ul>
       </div>
 
@@ -63,7 +63,7 @@
               <p>その心は？　　どちらも　<span class="highlight orange"> <span class="blur">答えを見る</span><span class="answer hidden">{{post.kokoro}}</span></span></p>
               <p class="right" >
                   <a class="twitter-share-button" href="https://twitter.com/intent/tweet?text={{post.share_text}}"> <i class="fa fa-twitter" aria-hidden="true"></i>Tweet</a>
-                  <span class="liked-number">{{post.like}}</span>
+                  <span class="liked-number" count="{{post.like}}">{{post.like}}</span>
                   <a href="javascript:void(0);" id="{{post.id}}" class="like-btn"><i class="fa fa-heart-o" aria-hidden="true"></i> like</a>
               </p>
             </form>
@@ -78,6 +78,17 @@
 
   <script type="text/javascript" src="{% static 'myapp/js/common.js'%}"></script>
 
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-83618382-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
 
 </body>
 </html>
