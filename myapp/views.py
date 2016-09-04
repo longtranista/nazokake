@@ -8,8 +8,8 @@ from rest_framework.response import Response
 from serializers import PostSerializer
 
 
-INITIAL_COUNT = 2
-LOAD_MORE_COUNT = 2
+INITIAL_COUNT = 20
+LOAD_MORE_COUNT = 20
 
 #API
 def like_api(request):
