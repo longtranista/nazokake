@@ -18,10 +18,13 @@ function abbreviateNumber(value) {
 
 function template(posts) {
 var tmpl = '';
+var pageMode = $('#pageMode').val();
+var lastNo = parseInt($('.item').last().find('.number').text());
 for (var i = 0; i < posts.length ; i++ ) {
   var post = posts[i];
   tmpl += [
-  '<div class="item" id="' + post.id + '">',
+  '<div class="item" id="' + (post.id) + '">',
+  '<div class="number ' + pageMode + '">' + (++lastNo) + '</div>',
   '<p>',
   '<span class="highlight">' + post.kakeru + '</span>　とかけて　<span class="highlight">' + post.toku + '</span> と解きます',
   '</p>',

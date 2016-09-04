@@ -38,7 +38,7 @@
     
   </div>
 
-  <div class="content container">
+  <div class="content container ">
    <div class="menu">
       <ul class="list-inline menu {{mode}}">
         <li class="time"><a href="/">新着</a></li>
@@ -61,6 +61,7 @@
     <div class="post-list">
       {% for post in posts %}
           <div class="item" id="{{post.id}}">
+            <div class="number {{mode}}">{{ forloop.counter }}</div>
               <p><span class="highlight">{{post.kakeru}}</span>　とかけて　<span class="highlight">{{post.toku}}</span> と解きます。</p>
               <p>その心は？　　どちらも　<span class="highlight orange"> <span class="blur">答えを見る</span><span class="answer hidden">{{post.kokoro}}</span></span></p>
               <p class="right" >
