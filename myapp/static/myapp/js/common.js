@@ -67,7 +67,7 @@ $(document).ready(function () {
     });
 
     $('.post-cover').click(function () {
-      $(this).siblings('form').removeClass('hidden-sm hidden-sm');
+      $(this).siblings('form').removeClass('hidden-sm hidden-xs');
       $(this).hide();
     })
 
