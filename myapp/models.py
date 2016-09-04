@@ -1,7 +1,8 @@
+# -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
 from django.db import models
-
+from django.utils.http import urlquote
 
 
 class Post(models.Model):
@@ -15,4 +16,7 @@ class Post(models.Model):
     def __unicode__(self):
         return u'%s' % self.kokoro
 
-
+    @property
+    def share_text(self):
+      text = u'%s　とかけて　%s　と解きます。\nどちらも%s！　#なぞかけ   \n-  %s' % (self.kakeru, self.toku, self.kokoro, 'http://nazokake.xyz')
+      return urlquote(text)

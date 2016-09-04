@@ -27,6 +27,10 @@
 
   
   <style type="text/css">
+  
+  a{
+    text-decoration: none !important;
+  }
 
   .header{
     background: #fff;
@@ -106,6 +110,10 @@
     .twitter-share-button{
       margin-right: 25px;
     }
+
+    .liked-number{
+      color: #7f7d7d;
+    }
   </style>
 
 </head>
@@ -157,7 +165,7 @@
 
               
 
-                  <a class="twitter-share-button" href="https://twitter.com/intent/tweet?text=「{{post.kakeru}}」とかけて「{{post.toku}}」その心は？ どちらも「{{post.kokoro}}」"> <i class="fa fa-twitter" aria-hidden="true"></i>
+                  <a class="twitter-share-button" href="https://twitter.com/intent/tweet?text={{post.share_text}}"> <i class="fa fa-twitter" aria-hidden="true"></i>
 Tweet</a>
 
 
@@ -175,7 +183,31 @@ Tweet</a>
   </div>
   <script type="text/javascript">
 
-      $(document).ready(function () {
+      function template(posts) {
+        var tmpl = '';
+        for (var i = 0; i < posts.length ; i++ ) {
+          var post = posts[i];
+          tmpl += [
+          '<div class="item" id="' + post.id + '">',
+          '<p>',
+          '<span class="highlight">' + post.kakeru + '</span>　とかけて　<span class="highlight">' + post.toku + '</span> と解きます',
+          '</p>',
+          '<p>',
+          'その心は？　　どちらも　<span class="highlight orange"> <span class="blur">答えを見る</span><span class="answer hidden">' + post.kokoro + '</span></span>',
+          '</p>',
+          '<p class="right" >',
+          '<a class="twitter-share-button" href="https://twitter.com/intent/tweet?text=' + post.share_text + '"> <i class="fa fa-twitter" aria-hidden="true"></i>Tweet</a>',
+          '<span class="liked-number">' + post.like + '</span>',
+          '<a href="javascript:void(0);" id="' + post.id + '" class="like-btn"><i class="fa fa-heart-o" aria-hidden="true"></i> like</a>',
+          '</p>',
+          '</form>',
+          '</div>'
+          ].join('');
+        }
+        return tmpl;
+      }
+
+      function syncLikeBtn() {
         $('.like-btn').each(function () {
           var id =  $(this).attr('id');
           var key = 'id-' + id;
@@ -184,8 +216,16 @@ Tweet</a>
             $(me).find('i').removeClass('fa-heart-o').addClass('fa-heart');
           }
         })
+      }
 
-        $('.like-btn').click(function () {
+
+      $(document).ready(function () {
+        
+        syncLikeBtn();
+
+
+        $('.post-list').on('click', '.like-btn', function () {
+          console.log('click me')
           var id =  $(this).attr('id');
           var key = 'id-' + id;
           var me = this;
@@ -203,7 +243,7 @@ Tweet</a>
           
         });
 
-        $('.blur').click(function () {
+        $('.post-list').on('click', '.blur', function () {
           var $me = $(this);
           var $next = $(this).siblings('.answer');
           $me.addClass('hidden');
@@ -217,6 +257,9 @@ Tweet</a>
               NProgress.start()
               $.get('/api/load?count=' + $('.item').length + '&mode=' + pageMode, {}, function (res) {
                 
+                $('.post-list').append(template(res.posts));
+
+                syncLikeBtn();
 
                 NProgress.done()
               })

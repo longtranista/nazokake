@@ -8,33 +8,30 @@ from rest_framework.response import Response
 from serializers import PostSerializer
 
 
-INITIAL_COUNT = 100
+INITIAL_COUNT = 2
 LOAD_MORE_COUNT = 2
 
 #API
 def like_api(request):
-  print request.GET
   post_id = request.GET['id']
-  print post_id
   post = Post.objects.get(pk=int(post_id))
   post.like = post.like + 1
   post.save()
 
-  return Response({
+  return JsonResponse({
     'code' : '100',
     'msg': 'success',
     })
 
 #API
 def load(request):
-  count = request.GET['count']
+  count = int(request.GET['count'])
   mode = request.GET['mode']
 
   if mode == 'created_at':
-    posts = Post.objects.order_by('-created_at')[count:LOAD_MORE_COUNT]
+    posts = Post.objects.order_by('-created_at')[count:LOAD_MORE_COUNT+count]
   else:
-    posts = Post.objects.order_by('-like')[count:LOAD_MORE_COUNT]
-
+    posts = Post.objects.order_by('-like')[count:LOAD_MORE_COUNT+count]
 
   return JsonResponse({ 
     'code' : '100',
