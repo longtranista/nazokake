@@ -35,6 +35,11 @@ body{
 }
 /**/
 
+
+input[type=text] {
+  margin-bottom: 2px;
+}
+
 .post{
   border: 1px solid #c0c0c0;
   padding: 10px;
@@ -53,6 +58,7 @@ body{
   display: inline-block;
   background: #dedede;
   padding: 0 10px;
+  margin-bottom: 2px;
 }
 .highlight.orange{
   background: #fdd792;
@@ -67,8 +73,8 @@ body{
 }
 .menu ul{
   position: absolute;
-      margin-top: -50px;
-    margin-left: -21px;
+  margin-top: -50px;
+  margin-left: -21px; 
 }
 
 
