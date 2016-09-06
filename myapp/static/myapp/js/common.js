@@ -117,13 +117,14 @@ $(document).ready(function () {
     })
 
     $('.load-more').click(function () {
-      loadMorePosts();
       $('.load-more i').addClass('fa-spin');
+      loadMorePosts();
     })
 
 
     $(window).scroll(function() {
        if($(window).scrollTop() + $(window).height() == $(document).height()) {
+          $('.load-more i').addClass('fa-spin');
           loadMorePosts();
        }
     });
