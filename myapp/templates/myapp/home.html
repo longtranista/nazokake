@@ -56,16 +56,18 @@
       </ul>
     </div>
     
-    <div class="post">
-      <div class="post-cover hidden-md hidden-lg">なぞかけを投稿 <i class="fa fa-arrow-down" aria-hidden="true"></i></div>
-      <form action="/action/post" class="hidden-xs hidden-sm" method="POST">
-        {% csrf_token %}
-        <p><input type="text" name="kakeru" placeholder="かける">　とかけて　<input type="text" placeholder="とく" name="toku"> と解きます。</p>
-        <p>その心は？　　どちらも　<input type="text" placeholder="こころ" name="kokoro"></p>
-        <p class="right">
-          <button class="btn btn-primary">投稿</button>
-        </p>
-      </form>
+    <div class="post-wrapper">
+      <div class="post">
+        <div class="post-cover hidden-md hidden-lg">なぞかけを投稿 <i class="fa fa-arrow-down" aria-hidden="true"></i></div>
+        <form action="/action/post" class="hidden-xs hidden-sm" method="POST">
+          {% csrf_token %}
+          <p><input type="text" name="kakeru" placeholder="かける">　とかけて　<input type="text" placeholder="とく" name="toku"> と解きます。</p>
+          <p>その心は？　　どちらも　<input type="text" placeholder="こころ" name="kokoro"></p>
+          <p class="right">
+            <button class="btn btn-primary">投稿</button>
+          </p>
+        </form>
+      </div>
     </div>
 
     <div class="post-list">
@@ -83,7 +85,8 @@
           </div>
       {% endfor %}
     </div>
-    
+    <div class="load-more hidden-md hidden-lg">もっと見る <i class="fa fa-refresh" aria-hidden="true"></i></div>
+
     <input type="hidden" id="pageMode" value="{{mode}}">
   </div>
 

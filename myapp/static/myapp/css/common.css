@@ -21,7 +21,7 @@ body{
   max-width: 700px;
   margin-top: 10px;
   background: #fff;
-  padding: 20px;
+  padding: 0px !important;
 }
 .header-content{
   max-width: 800px;
@@ -85,6 +85,9 @@ input[type=text] {
   margin-bottom: 2px;
 }
 
+.post-wrapper{
+  padding: 20px 20px 0px;
+}
 .post{
   border: 1px solid #c0c0c0;
   padding: 10px;
@@ -98,14 +101,14 @@ input[type=text] {
   margin-top: 20px;
   border-bottom: 1px solid #dcd8d8;
   position: relative;
-  padding-left: 15px;
+  padding: 0 25px;
 } 
 
 .post-list .item .number{
   position: absolute;
   color: #ccc;
   font-size: 20px;
-  left: -10px;
+  left: 5px;
   margin-top: 20px;
 } 
 .post-list .item .number.like{
@@ -132,8 +135,8 @@ input[type=text] {
 }
 .menu ul{
   position: absolute;
-  margin-top: -50px;
-  margin-left: -21px; 
+  margin-top: -31px;
+  margin-left: -1px;
 }
 
 
@@ -165,6 +168,8 @@ input[type=text] {
 
 .liked-number{
   color: #7f7d7d;
+  display: inline-block;
+  width: 47px;  
 }
 
 .post-cover{
@@ -172,4 +177,9 @@ input[type=text] {
   text-align: center;
   color: #337ab7;
 }
-
+.load-more{
+  cursor: pointer;
+  text-align: center;
+  color: #337ab7;
+  line-height: 30px;
+}
