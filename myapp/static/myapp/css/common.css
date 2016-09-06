@@ -101,7 +101,7 @@ input[type=text] {
   margin-top: 20px;
   border-bottom: 1px solid #dcd8d8;
   position: relative;
-  padding: 0 25px;
+  padding: 0 25px 0 32px;
 } 
 
 .post-list .item .number{
@@ -169,7 +169,7 @@ input[type=text] {
 .liked-number{
   color: #7f7d7d;
   display: inline-block;
-  width: 47px;  
+  min-width: 25px;  
 }
 
 .post-cover{
